@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  react-test-app:
+    build:
+      context: "./"
+      target: builder
+    working_dir: /code
+    command: sh /code/entrypoint.sh
+    volumes:
+      - frontend:/code/node_modules
+      - ./:/code
+    ports:
+      - "3000:3000"
+    # networks:
+    #   - nginx_network
+    stdin_open: true
+
+volumes:
+  frontend:

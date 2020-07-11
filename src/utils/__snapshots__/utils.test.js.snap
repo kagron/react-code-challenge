@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getTVShowNames() completes successfully when given a search term of superman but 3 results sorted properly 1`] = `
+Array [
+  Object {
+    "show": Object {
+      "name": "A Superman",
+    },
+  },
+  Object {
+    "show": Object {
+      "name": "Superman",
+    },
+  },
+  Object {
+    "show": Object {
+      "name": "The Superman",
+    },
+  },
+]
+`;
+
+exports[`getTVShowNames() completes successfully when given a search term of superman with 1 results 1`] = `
+Array [
+  Object {
+    "show": Object {
+      "name": "Superman",
+    },
+  },
+]
+`;
