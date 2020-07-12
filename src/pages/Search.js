@@ -35,7 +35,7 @@ const Search = () => {
         if (!searchTerm) {
             setSearchTermHasError(true);
         } else {
-            history.push(`/results?searchTerm=${searchTerm}`);
+            history.push(`/results?searchTerm=${encodeURIComponent(searchTerm)}`);
         }
     };
 

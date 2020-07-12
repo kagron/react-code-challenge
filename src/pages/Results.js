@@ -19,7 +19,7 @@ import useQuery from '../hooks/useQuery';
 const Results = () => {
     // React Router Hooks
     const query = useQuery();
-    const searchTerm = query.get('searchTerm') || '';
+    const searchTerm = decodeURIComponent(query.get('searchTerm')) || '';
     const history = useHistory();
 
     // Redux hooks
@@ -30,7 +30,8 @@ const Results = () => {
     const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => {
-        if (!searchTerm) {
+        console.log(searchTerm);
+        if (!searchTerm || searchTerm === 'null') {
             enqueueSnackbar('Please enter a valid input character', { variant: 'error' });
             history.push('/');
         } else {

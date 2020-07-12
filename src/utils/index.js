@@ -10,7 +10,7 @@ export const getTVShowNames = async (searchTerm) => {
      */
 
     // Normally I would put this in an environment variable
-    const url = `http://api.tvmaze.com/search/shows?q=${searchTerm}`;
+    const url = `http://api.tvmaze.com/search/shows?q=${encodeURIComponent(searchTerm)}`;
     const response = await fetch(url);
     if (response.ok) {
         /**
