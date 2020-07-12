@@ -1,18 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getTVShowNames } from '../../utils';
 
+export const initialState = {
+    searchTerm: null,
+    currentShows: [],
+    isLoading: false,
+    error: null
+};
 /**
  * Create a slice for Redux toolkit containing the reducers and actions
  * related to shows
  */
 const showsSlice = createSlice({
     name: 'shows',
-    initialState: {
-        searchTerm: null,
-        currentShows: [],
-        isLoading: false,
-        error: null
-    },
+    initialState,
     reducers: {
         getShowsStart(state, action) {
             const { searchTerm } = action.payload;
@@ -32,8 +33,6 @@ const showsSlice = createSlice({
     }
 });
 
-export const { getShowsStart, getShowsSuccess, getShowsFailure } = showsSlice.actions;
-
 /**
  * Thunk action for retrieving TV Shows
  * @param {Object} args
@@ -50,4 +49,5 @@ export const fetchShows = ({ searchTerm }) => async (dispatch) => {
     }
 };
 
+export const { getShowsStart, getShowsSuccess, getShowsFailure } = showsSlice.actions;
 export default showsSlice.reducer;

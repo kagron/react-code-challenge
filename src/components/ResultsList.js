@@ -11,14 +11,13 @@ import Link from '@material-ui/core/Link';
 import ShowCard from './ShowCard';
 
 // React Router
-import { useParams, Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 /**
  * Part 2: Using the provide React starter app, display the data returned from the previous question.
  */
 const ResultsList = (props) => {
-    const { searchTerm } = useParams();
-    const { isLoading = false, currentShows = [] } = props;
+    const { searchTerm, isLoading = false, currentShows = [] } = props;
     return isLoading ? (
         <Box display="flex" alignItems="center" justifyContent="center">
             <CircularProgress />
@@ -55,6 +54,7 @@ const ResultsList = (props) => {
 };
 
 ResultsList.propTypes = {
+    searchTerm: PropTypes.string.isRequired,
     isLoading: PropTypes.bool,
     currentShows: PropTypes.arrayOf(
         PropTypes.shape({

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 // React Router
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -13,9 +13,13 @@ import { fetchShows } from '../slices/shows/showsSlice';
 import { useSnackbar } from 'notistack';
 import ResultsList from '../components/ResultsList';
 
+// Custom Hook
+import useQuery from '../hooks/useQuery';
+
 const Results = () => {
     // React Router Hooks
-    const { searchTerm } = useParams();
+    const query = useQuery();
+    const searchTerm = query.get('searchTerm') || '';
     const history = useHistory();
 
     // Redux hooks
@@ -48,7 +52,7 @@ const Results = () => {
 
     return (
         <div>
-            <ResultsList {...{ isLoading, currentShows: filteredShows }} />
+            <ResultsList {...{ searchTerm, isLoading, currentShows: filteredShows }} />
         </div>
     );
 };

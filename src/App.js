@@ -56,7 +56,7 @@ function App() {
                     <MainLayout>
                         <Router>
                             <Switch>
-                                <Route path="/results/:searchTerm" exact={true} component={Results} />
+                                <Route path="/results" exact={true} component={Results} />
                                 <Route path="/" exact={true} component={Search} />
                                 <Route path="*" component={NoMatch} />
                             </Switch>

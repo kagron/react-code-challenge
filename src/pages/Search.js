@@ -35,7 +35,7 @@ const Search = () => {
         if (!searchTerm) {
             setSearchTermHasError(true);
         } else {
-            history.push(`/results/${searchTerm}`);
+            history.push(`/results?searchTerm=${searchTerm}`);
         }
     };
 
@@ -49,6 +49,7 @@ const Search = () => {
                     <Box mb={3} width={1}>
                         <TextField
                             label="TV Show Title"
+                            placeholder="TV Show Title"
                             variant="outlined"
                             autoFocus={true}
                             fullWidth={true}
@@ -64,6 +65,7 @@ const Search = () => {
                         fullWidth={true}
                         endIcon={<SearchIcon />}
                         type="submit"
+                        data-testid="submit-search-btn"
                     >
                         Search
                     </Button>
