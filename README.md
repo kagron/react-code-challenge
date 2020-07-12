@@ -8,13 +8,13 @@ This project is deployed on [AWS](http://ec2-52-86-194-33.compute-1.amazonaws.co
 
 There are two methods to run this locally: Docker and Node
 
-### Docker
+### Docker - Dependencies are: Docker & Docker Compose
 
 -   `$ docker-compose up`
 
 Project will be available at `localhost:3000` by default
 
-### Node/NPM
+### Node/NPM - Dependencies are Node & NPM
 
 -   `$ npm i`
 -   `$ npm start`
