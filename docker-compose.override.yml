@@ -7,3 +7,12 @@ services:
       target: builder
     working_dir: /code
     command: sh /code/entrypoint.sh
+    volumes:
+      - frontend:/code/node_modules
+      - ./:/code
+    ports:
+      - "3000:3000"
+    stdin_open: true
+
+volumes:
+  frontend:

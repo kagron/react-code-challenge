@@ -4,7 +4,8 @@ ENV NPM_CONFIG_LOGLEVEL warn
 ARG NODE_ENV="development"
 ENV NODE_ENV=${NODE_ENV}
 
-ENV PORT="3000"
+ARG PORT="3000"
+ENV PORT=${PORT}
 
 RUN mkdir -p /code
 WORKDIR /code
@@ -13,9 +14,8 @@ ENV PATH /code/node_modules/.bin:$PATH
 COPY package*.json ./
 RUN npm install
 ADD . /code
-RUN if [ $NODE_ENV = 'production' ] ; then npm build ; fi
+RUN if [ $NODE_ENV = 'production' ] ; then npm run build ; fi
 
 FROM nginx:1.17 as prod
 
-COPY --from=builder /code/frontend/ /usr/share/nginx/html
-RUN nginx -c /etc/nginx/nginx.conf -t
+COPY --from=builder /code/build /usr/share/nginx/html
